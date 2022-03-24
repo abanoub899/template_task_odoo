@@ -1,0 +1,35 @@
+<odoo>
+    <data>
+        <record id="view_template_wizard_view" model="ir.ui.view">
+            <field name="name">Template Wizard</field>
+            <field name="model">template.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Tax Reports">
+                    <group>
+                        <field name="name" ></field>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                    <footer>
+                        <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_create_wizard" model="ir.actions.act_window">
+            <field name="name">Template Wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">template.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_template_wizard_view"/>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="menu_create_report_pdf"
+                  name=" Template Wizard"
+                  parent="account.menu_finance_reports"
+                  action="action_create_wizard"
+                  sequence="100"/>
+    </data>
+
+</odoo>
